@@ -1,24 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-function FeedbackOptions({ state, onClick }) {
+import React from "react";
+import PropTypes from "prop-types";
+export default function FeedbackOptions({ good, bad, neutral, onClick }) {
   return (
     <>
-      {Object.keys(state).map(key => (
-        <button key={key} type="button" name={key} onClick={onClick}>
-          {key}
-        </button>
-      ))}
+      <button key={"good"} type="button" name={"good"} onClick={onClick}>
+        {"good"}
+      </button>
+      <button key={"bad"} type="button" name={"bad"} onClick={onClick}>
+        {"bad"}
+      </button>
+      <button key={"neutral"} type="button" name={"neutral"} onClick={onClick}>
+        {"neutral"}
+      </button>
     </>
   );
 }
 
 FeedbackOptions.propTypes = {
   onClick: PropTypes.func,
-  state: PropTypes.shape({
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
-  }),
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
 };
-
-export default FeedbackOptions;

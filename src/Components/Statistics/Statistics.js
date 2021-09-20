@@ -1,18 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Notification from './Notification';
-function Statistics({ state, total, positivePercentage }) {
+import React from "react";
+import PropTypes from "prop-types";
+import Notification from "./Notification";
+export default function Statistics({ good, bad, neutral, total, percentage }) {
   return (
     <>
       {total ? (
         <>
-          {Object.keys(state).map(key => (
-            <p key={key}>
-              {key}: {state[key]}.
-            </p>
-          ))}
+          <p key={"good"}>Good:{good}</p>
+          <p key={"bad"}>Bad:{bad}</p>
+          <p key={"neutral"}>Neutral:{neutral}</p>
           <p>Total: {total}</p>
-          <p>Positive Percentage:{positivePercentage}</p>
+          <p>Positive Percentage:{percentage}</p>
         </>
       ) : (
         <Notification />
@@ -22,13 +20,9 @@ function Statistics({ state, total, positivePercentage }) {
 }
 
 Statistics.propTypes = {
-  positivePercentage: PropTypes.func,
-  total: PropTypes.func,
-  state: PropTypes.shape({
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
-  }),
+  percentage: PropTypes.number,
+  total: PropTypes.number,
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
 };
-
-export default Statistics;
